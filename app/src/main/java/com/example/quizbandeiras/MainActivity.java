@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(it);
     }
     public void Sair(View view){
-        finish();
+        finishAffinity();
     }
 
 }

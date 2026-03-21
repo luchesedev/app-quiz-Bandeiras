@@ -20,17 +20,43 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:scaleType="centerCrop"
-            app:srcCompat="@drawable/bgtelainicialbandeiras"/>
+            app:srcCompat="@drawable/bgtelainicialbandeiras" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="150dp"
-            android:textColor="@color/black"
-            android:textSize="22sp"
-            android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="327dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="17dp"
+
+                android:layout_marginTop="152dp"
+                android:background="@drawable/borda_historico"
+                android:gravity="center"
+
+                android:text="Histórico de partidas"
+                android:textColor="#A66521"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="150dp"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+
+
+
+        </LinearLayout>
+
         <Button
             android:id="@+id/btnLimpar"
             android:layout_width="200dp"
@@ -38,32 +64,38 @@
             android:layout_gravity="bottom|center_horizontal"
             android:layout_marginBottom="170dp"
             android:backgroundTint="#F4ECEC"
+            android:onClick="limpar"
             android:text="limpar"
-            android:onClick="principal"
             android:textColor="#A66521"
             app:backgroundTint="#FFFFFF"
-            app:cornerRadius="0px"/>
+            app:cornerRadius="0px" />
         <Button
             android:id="@+id/btninicio"
-
             android:layout_width="200dp"
-
             android:layout_height="60dp"
-
             android:layout_gravity="bottom|center_horizontal"
-
             android:layout_marginBottom="100dp"
-
             android:backgroundTint="#F4ECEC"
-
             android:text="Jogar novamente"
             android:onClick="principal"
-
             android:textColor="#A66521"
-
             app:backgroundTint="#FFFFFF"
-
             app:cornerRadius="0px"/>
+
+        <EditText
+            android:id="@+id/edtResultado"
+            android:layout_width="327dp"
+            android:layout_height="278dp"
+            android:layout_gravity="clip_vertical"
+            android:layout_marginLeft="17dp"
+            android:layout_marginTop="189dp"
+            android:background="@drawable/borda_historico"
+            android:ems="10"
+            android:enabled="false"
+            android:gravity="start|top"
+            android:inputType="textMultiLine"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
 
     </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

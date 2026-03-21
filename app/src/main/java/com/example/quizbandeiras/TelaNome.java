@@ -71,13 +71,29 @@ public class TelaNome extends AppCompatActivity {
 
     public void telaquestao(View view) {
         // Opcional: passar o nome para a próxima tela
-        String nomeUsuario = edtNome.getText().toString();
-        it = new Intent(this, Telaquiz.class);
-        it.putExtra("nome", nomeUsuario);
+        String nomeUsuario = edtNome.getText().toString().trim();
+
+        // 2. Salva no "Armário Global" (SharedPreferences)
+        // "DADOS_QUIZ" é o nome do seu arquivo de preferências
+        getSharedPreferences("DADOS_QUIZ", MODE_PRIVATE)
+                .edit()
+                .putString("nome_jogador", nomeUsuario)
+                .apply(); // O apply() salva em segundo plano, sem travar o app
+
+        // 3. Inicia a Telaquiz normalmente
+        // Note que aqui não precisamos mais do putExtra para o nome!
+        Intent it = new Intent(this, Telaquiz.class);
         startActivity(it);
     }
 
     public void voltar(View view) {
-        finish();
+
+        Intent it = new Intent(this, MainActivity.class);
+
+        // Limpa a pilha para garantir que a MainActivity seja a única aberta
+        it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+
+        startActivity(it);
+        finish(); // Mata a TelaNome
     }
 }
