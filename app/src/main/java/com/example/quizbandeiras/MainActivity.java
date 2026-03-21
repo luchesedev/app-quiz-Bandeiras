@@ -12,7 +12,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
-    Button btnIniciar;
+    Button btninicio;
     Intent it;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,15 +24,15 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        btnIniciar = findViewById(R.id.btnIniciar);
+        btninicio = findViewById(R.id.btnIniciar);
 
     }
     public void proximatela(View view){
-        it = new Intent(getApplicationContext(), TelaNome.class);
+        it = new Intent(this, TelaNome.class);
         startActivity(it);
     }
     public void resultado(View view){
-        it = new Intent(getApplicationContext(), TelaAcertos.class);
+        it = new Intent(this, TelaAcertos.class);
         startActivity(it);
     }
 
