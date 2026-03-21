@@ -1,46 +1,54 @@
-🚩 Quiz de Bandeiras - Android Java
-Este é um projeto acadêmico desenvolvido para a disciplina de Programação Orientada a Objetos (POO) e Desenvolvimento Mobile na FATEC Guarulhos. O aplicativo desafia o usuário a identificar bandeiras de diferentes países, mantendo um histórico de pontuação ordenado.
+# 🚩 Quiz de Bandeiras - Android Java
 
-🚀 Funcionalidades
-Identificação de Usuário: Sistema de captura de nome com validação em tempo real (TextWatcher).
+---
 
-Mecânica de Quiz: Questões aleatórias (Collections.shuffle) com feedback visual imediato (cores verde/vermelho).
+### 📖 Sobre o Projeto
+Este é um projeto acadêmico desenvolvido para a disciplina de **Programação Orientada a Objetos (POO)** e **Desenvolvimento Mobile** na **FATEC Guarulhos**. O aplicativo desafia o usuário a identificar bandeiras de diferentes países, mantendo um histórico de pontuação ordenado.
 
-Persistência de Dados Local: Uso de SharedPreferences para manter o nome do usuário entre diferentes telas.
+---
 
-Histórico de Partidas: Ranking persistente em memória (static List) que exibe os resultados em ordem decrescente (maiores pontuações no topo).
+## 🚀 Funcionalidades
 
-Navegação Inteligente: Gerenciamento da pilha de atividades (Back Stack) usando Flags de Intent para evitar consumo excessivo de memória.
+* **👤 Identificação de Usuário:** Sistema de captura de nome com validação em tempo real (`TextWatcher`).
+* **🎮 Mecânica de Quiz:** Questões aleatórias (`Collections.shuffle`) com feedback visual imediato (cores verde/vermelho).
+* **💾 Persistência de Dados:** Uso de `SharedPreferences` para manter o nome do usuário entre diferentes telas.
+* **🏆 Histórico de Partidas:** Ranking persistente em memória (`static List`) que exibe os resultados em ordem decrescente.
+* **🔄 Navegação Inteligente:** Gerenciamento da pilha de atividades (*Back Stack*) usando `Flags de Intent` para otimização de memória.
 
-🛠️ Tecnologias Utilizadas
-Linguagem: Java
+---
 
-IDE: Android Studio
+## 🛠️ Tecnologias e Ferramentas
 
-Layout: XML (ConstraintLayout, LinearLayout, FrameLayout)
+<div style="display: inline_block">
+  <img align="center" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg">
+  <img align="center" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/androidstudio/androidstudio-original.svg">
+  <img align="center" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/xml/xml-original.svg">
+</div>
 
-Componentes:
+<br>
 
-SharedPreferences para persistência simples.
+* **Linguagem:** Java
+* **IDE:** Android Studio
+* **Layout:** XML (`ConstraintLayout`, `LinearLayout`, `FrameLayout`)
+* **Componentes:** `SharedPreferences`, `Intent Flags`, `Collections Framework`, `Handler`.
 
-Intent Flags para controle de fluxo.
+---
 
-Collections Framework para ordenação de objetos.
+## 🏗️ Estrutura de Classes (POO)
 
-Handler para controle de tempo nas transições.
+O projeto aplica conceitos fundamentais de POO para organização da lógica:
 
-🏗️ Estrutura de Classes (POO)
-O projeto segue princípios de POO para organização do código:
+* `Questao.java`: Modelo para armazenamento do ID do recurso da imagem e alternativas.
+* `Resultado.java`: Modelo que associa o nome do jogador à pontuação para o ranking.
+* `Telaquiz.java`: Controller da lógica do jogo e verificação de respostas.
+* `TelaAcertos.java`: View responsável por processar e exibir o ranking ordenado.
 
-Questao.java: Modelo que armazena o ID do recurso da imagem e as alternativas.
+---
 
-Resultado.java: Modelo que associa o nome do jogador à sua pontuação, utilizado no ranking.
+## 📱 Demonstração Técnica
 
-Telaquiz.java: Gerencia a lógica do jogo, embaralhamento e verificação de respostas.
+O aplicativo foi otimizado para evitar o empilhamento desnecessário de *Activities*:
 
-TelaAcertos.java: Responsável por processar e exibir o ranking ordenado.
+> "Ao clicar em 'Jogar Novamente', o app utiliza a flag **FLAG_ACTIVITY_CLEAR_TOP**, limpando a memória e garantindo uma navegação fluida."
 
-📱 Demonstração Técnica
-O aplicativo foi otimizado para evitar o empilhamento desnecessário de Activitys:
-
-"Ao clicar em 'Jogar Novamente', o app utiliza a flag FLAG_ACTIVITY_CLEAR_TOP, limpando a memória e garantindo uma navegação fluida."
+---
