@@ -35,7 +35,7 @@ public class TelaAcertos extends AppCompatActivity {
 
     }
     public void principal(View view){
-        it = new Intent(this, MainActivity.class);
+        it = new Intent(this, TelaNome.class);
         startActivity(it);
         finish(); // Adicione o finish para o usuário não voltar para a tela de acertos ao apertar o botão 'voltar'
     }

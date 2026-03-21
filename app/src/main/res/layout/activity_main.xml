@@ -39,7 +39,6 @@
             android:layout_gravity="bottom|center_horizontal"
             android:layout_marginBottom="170dp"
             android:backgroundTint="#F4ECEC"
-
             android:onClick="proximatela"
             android:text="jogar"
             android:textColor="#A66521"
@@ -48,24 +47,27 @@
 
         <Button
             android:id="@+id/btnAcertos"
-
             android:layout_width="200dp"
-
             android:layout_height="60dp"
-
             android:layout_gravity="bottom|center_horizontal"
-
             android:layout_marginBottom="100dp"
-
             android:backgroundTint="#F4ECEC"
             android:onClick="resultado"
-
             android:text="Histórico de partidas"
-
             android:textColor="#A66521"
-
             app:backgroundTint="#FFFFFF"
-
+            app:cornerRadius="0px" />
+        <Button
+            android:id="@+id/btnSair"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="30dp"
+            android:backgroundTint="#F4ECEC"
+            android:onClick="Sair"
+            android:text="Sair"
+            android:textColor="#A66521"
+            app:backgroundTint="#FFFFFF"
             app:cornerRadius="0px" />
 
     </FrameLayout>

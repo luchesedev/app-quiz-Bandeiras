@@ -12,7 +12,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
-    Button btninicio;
+    Button btninicio,btnsair;
     Intent it;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +34,9 @@ public class MainActivity extends AppCompatActivity {
     public void resultado(View view){
         it = new Intent(this, TelaAcertos.class);
         startActivity(it);
+    }
+    public void Sair(View view){
+        finish();
     }
 
 }
