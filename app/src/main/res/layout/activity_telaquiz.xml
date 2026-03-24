@@ -38,7 +38,7 @@
 
             android:scaleType="centerCrop"
 
-            app:srcCompat="@drawable/unnamed" />
+            app:srcCompat="@drawable/unamed" />
 
 
 
