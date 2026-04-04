@@ -84,7 +84,7 @@ public class TelaAcertos extends AppCompatActivity {
                 for (Resultado r : listaHistorico) {
                     sb.append("🏆 JOGADOR: ").append(r.getNome().toUpperCase()) // Nome em caixa alta
                             .append("\n🎯 PONTOS: ").append(r.getAcertos())
-                            .append("\n--------------------------\n");
+                            .append("\n"+("-").repeat(69)+"\n");
                 }
             }
 

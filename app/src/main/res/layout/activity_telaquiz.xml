@@ -83,110 +83,98 @@
             app:srcCompat="@drawable/africadosul" />
 
 
-
-        <Button
-
-            android:id="@+id/btn1"
-
-            android:layout_width="280dp"
-
-            android:layout_height="50dp"
-
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="80dp"
+            android:orientation="vertical">
 
-            android:layout_marginBottom="220dp"
+            <RadioGroup
+                android:id="@+id/grupoAlternativas"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
 
-            android:onClick="verificarResposta"
+                <RadioButton
+                    android:layout_width="280dp"
+                    android:id="@+id/btn1"
+                    android:layout_height="50dp"
+                    android:button="@null"
+                    style="@style/Widget.AppCompat.Button"
+                    android:background="@drawable/botao_selecionado"
 
-            android:text="Alternativa A"
+                    android:textColor="@color/text_selector"
+                    android:layout_marginTop="3dp"
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:text="Alternativa A"
+                    app:cornerRadius="0px" />
 
-            app:backgroundTint="#005792"
+                <RadioButton
+                    android:id="@+id/btn2"
+                    android:layout_width="280dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:button="@null"
+                    style="@style/Widget.AppCompat.Button"
+                    android:background="@drawable/botao_selecionado"
 
-            app:cornerRadius="0px" />
+                    android:layout_marginTop="3dp"
+                    android:textColor="@color/text_selector"
+                    android:text="Alternativa B"
+                    app:cornerRadius="0px" />
 
+                <RadioButton
+                    android:id="@+id/btn3"
+                    android:layout_width="280dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:button="@null"
+                    style="@style/Widget.AppCompat.Button"
+                    android:background="@drawable/botao_selecionado"
 
+                    android:layout_marginTop="3dp"
+                    android:textColor="@color/text_selector"
+                    android:text="Alternativa C"
+                    app:cornerRadius="0px" />
 
-        <Button
+                <RadioButton
+                    android:id="@+id/btn4"
+                    android:layout_width="280dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:button="@null"
+                    style="@style/Widget.AppCompat.Button"
+                    android:background="@drawable/botao_selecionado"
 
-            android:id="@+id/btn2"
-
-            android:layout_width="280dp"
-
-            android:layout_height="50dp"
-
-            android:layout_gravity="bottom|center_horizontal"
-
-            android:layout_marginBottom="170dp"
-
-            android:onClick="verificarResposta"
-
-            android:text="Alternativa B"
-
-            app:backgroundTint="#005792"
-
-            app:cornerRadius="0px" />
-
-
-
-        <Button
-
-            android:id="@+id/btn3"
-
-            android:layout_width="280dp"
-
-            android:layout_height="50dp"
-
-            android:layout_gravity="bottom|center_horizontal"
-
-            android:layout_marginBottom="120dp"
-
-            android:onClick="verificarResposta"
-
-            android:text="Alternativa C"
-
-            app:backgroundTint="#005792"
-
-            app:cornerRadius="0px" />
-
+                    android:layout_marginTop="3dp"
+                    android:textColor="@color/text_selector"
+                    android:text="Alternativa D"
+                    app:cornerRadius="0px" />
+            </RadioGroup>
 
 
-        <Button
-
-            android:id="@+id/btn4"
-
-            android:layout_width="280dp"
-
-            android:layout_height="50dp"
-
-            android:layout_gravity="bottom|center_horizontal"
-
-            android:layout_marginBottom="70dp"
-
-            android:onClick="verificarResposta"
-
-            android:text="Alternativa D"
-
-            app:backgroundTint="#005792"
-
-            app:cornerRadius="0px" />
-
+            <Button
+                android:layout_marginTop="3dp"
+                android:id="@+id/btnproxima"
+                android:layout_width="280dp"
+                android:layout_height="50dp"
+                android:layout_gravity="bottom|center_horizontal"
+                android:background="@drawable/borda_historico"
+                android:onClick="verificarResposta"
+                android:text="próxima pergunta"
+                android:textColor="@color/azul"
+                app:backgroundTint="@null"
+                app:cornerRadius="0px" />
+        </LinearLayout>
 
         <TextView
-
             android:id="@+id/textView4"
-
             android:layout_width="wrap_content"
-
             android:layout_height="wrap_content"
-
-            android:layout_gravity="bottom|center_horizontal"
-
-            android:layout_marginBottom="10dp"
-
+            android:layout_gravity="center"
+            android:layout_marginBottom="15dp"
             android:text="Acertos:0"
-
             android:textColor="@color/white"
-
             android:textSize="22sp"
             android:textStyle="bold" />
 

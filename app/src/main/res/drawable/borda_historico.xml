@@ -6,10 +6,10 @@
 
     <stroke
         android:width="2dp"
-        android:color="#A66521"
+        android:color="@color/azul"
         />
 
-    <corners android:radius="0px" />
+    <corners android:radius="10dp" />
 
     <padding
         android:left="12dp"

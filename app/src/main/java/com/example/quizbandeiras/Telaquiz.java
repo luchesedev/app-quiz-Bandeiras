@@ -8,6 +8,8 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -26,7 +28,9 @@ public class Telaquiz extends AppCompatActivity {
     // Variáveis globais
     List<Questao> questoes = new ArrayList<>();
     ImageView imgplaca;
-    Button btn1, btn2, btn3, btn4;
+    RadioButton btn1, btn2, btn3, btn4;
+    RadioGroup grupoAlternativas;
+    Button btnproxima;
     int cont = 0, acertos = 0;
     TextView textview3, textView4;
 
@@ -43,12 +47,13 @@ public class Telaquiz extends AppCompatActivity {
             return insets;
         });
 
-
+        grupoAlternativas = findViewById(R.id.grupoAlternativas);
         imgplaca = findViewById(R.id.imgplaca);
         btn1 = findViewById(R.id.btn1);
         btn2 = findViewById(R.id.btn2);
         btn3 = findViewById(R.id.btn3);
         btn4 = findViewById(R.id.btn4);
+        btnproxima = findViewById(R.id.btnproxima);
         textview3 = findViewById(R.id.textview3);
         textView4 = findViewById(R.id.textView4);
 
@@ -66,10 +71,7 @@ public class Telaquiz extends AppCompatActivity {
 
         // 3. EMBARALHAR AS PERGUNTAS
         Collections.shuffle(questoes);
-        btn1.setTextColor(Color.WHITE);
-        btn2.setTextColor(Color.WHITE);
-        btn3.setTextColor(Color.WHITE);
-        btn4.setTextColor(Color.WHITE);
+
         // 4. CHAMAR A PRIMEIRA QUESTÃO
         atualizarTela();
     }
@@ -104,41 +106,47 @@ public class Telaquiz extends AppCompatActivity {
 
 
     public void verificarResposta(View view) {
-        final Button btnClicado = (Button) view;
-        String respostaEscolhida = btnClicado.getText().toString();
-        String respostaCorreta = questoes.get(cont).getRespostaCorreta();
-        final ColorStateList corOriginal = ColorStateList.valueOf(Color.parseColor("#005792"));
+        int idSelecionado = grupoAlternativas.getCheckedRadioButtonId();
+        if (idSelecionado == -1) return;
 
-        // 1. Define a cor do feedback (Verde ou Vermelho)
+        final RadioButton btnVerificar = findViewById(idSelecionado);
+        String respostaEscolhida = btnVerificar.getText().toString();
+        String respostaCorreta = questoes.get(cont).getRespostaCorreta();
+
+        // 1. Feedback Visual usando Cores do Sistema para acerto/erro
         if (respostaEscolhida.equals(respostaCorreta)) {
             acertos++;
-            btnClicado.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
+            btnVerificar.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
         } else {
-            btnClicado.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
+            btnVerificar.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
         }
 
-        // 2. BLOQUEIA os botões para o usuário não clicar em outro enquanto espera
-        btn1.setEnabled(false); btn2.setEnabled(false);
-        btn3.setEnabled(false); btn4.setEnabled(false);
+        bloquearBotoes(false);
 
-        // 3. O "HANDLER" é o seu sleep que funciona
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                // Tudo aqui dentro roda DEPOIS de 700ms
+                // 1. LIMPA A SELEÇÃO DO GRUPO (Isso aciona o 'state_checked="false"' do seu XML)
+                grupoAlternativas.clearCheck();
 
-                // Volta a cor original
-                btn1.setBackgroundTintList(corOriginal);
-                btn2.setBackgroundTintList(corOriginal);
-                btn3.setBackgroundTintList(corOriginal);
-                btn4.setBackgroundTintList(corOriginal);
+                // 2. REMOVE A TINTA (VERDE/VERMELHA) DE TODOS
+                // Ao definir como null, o Android volta a olhar para o seu arquivo <selector>
+                btn1.setBackgroundTintList(null);
+                btn2.setBackgroundTintList(null);
+                btn3.setBackgroundTintList(null);
+                btn4.setBackgroundTintList(null);
 
-                // Reativa os botões
-                btn1.setEnabled(true); btn2.setEnabled(true);
-                btn3.setEnabled(true); btn4.setEnabled(true);
+                // 3. REAPLICA O SEU SELECTOR (Caso tenha sido sobrescrito)
+                // Substitua 'seu_arquivo_selector' pelo nome do seu arquivo XML de fundo
+                btn1.setBackgroundResource(R.drawable.botao_selecionado);
+                btn2.setBackgroundResource(R.drawable.botao_selecionado);
+                btn3.setBackgroundResource(R.drawable.botao_selecionado);
+                btn4.setBackgroundResource(R.drawable.botao_selecionado);
+
+                // 4. LIBERA OS BOTÕES
+                bloquearBotoes(true);
 
                 cont++;
-
                 if (cont < questoes.size()) {
                     atualizarTela();
                 } else {
@@ -148,6 +156,15 @@ public class Telaquiz extends AppCompatActivity {
                     finish();
                 }
             }
-        }, 400); // Esse é o tempo que a cor fica na tela
+        }, 600);
+    }
+
+    // Método para habilitar/desabilitar a interação
+    private void bloquearBotoes(boolean estado) {
+        btn1.setEnabled(estado);
+        btn2.setEnabled(estado);
+        btn3.setEnabled(estado);
+        btn4.setEnabled(estado);
+        btnproxima.setEnabled(estado);
     }
 }
